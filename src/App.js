@@ -9,10 +9,12 @@ import { useParams } from 'react-router-dom';
 // import CourseId1 from "./screens/course/1";
 import { Link } from "react-router-dom";
 import Dashboard from "./screens/dashboard/Dashboard";
+import CourseDescription from "./utility/CourseDescription";
 
 
 
 function App() {
+  const filteredCourses = courses.listOfCourses
   return (
     <>
     <ul>
@@ -22,10 +24,10 @@ function App() {
     <Routes>
       <Route path="*" element={<Home courses={courses.listOfCourses}/>}/>
       <Route path="/dashboard" element={<Dashboard />}/>
-
+          {filteredCourses.map((course, index) => (
+           <Route key={index} path="/course/:id" element={<CourseDescription/>}/>
+          ))}
     </Routes>
-    
-    
     </>
   );
 }

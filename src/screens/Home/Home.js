@@ -31,7 +31,7 @@ function Home({courses}) {
         <ul style={{ maxHeight: '300px', overflowY: 'auto', listStyle: 'none', padding: 0 }}>
           {filteredCourses.map((course, index) => (
             <li key={index} style={{ borderBottom: '1px solid #ccc', padding: '10px' }}>
-              <Link to={`/course/${course.name}`}>
+              <Link to={`/course/${index}`}>
                 <strong>Course:</strong> {course.name} <br />
                 <strong>Instructor:</strong> {course.instructor}
               </Link>
@@ -39,11 +39,11 @@ function Home({courses}) {
           ))}
         </ul>
       </nav>
-      <Routes>
+      {/* <Routes>
           {filteredCourses.map((course, index) => (
            <Route key={index} path={`/course/${course.name}`} element={<CourseDescription course={course}/>}/>
           ))}
-      </Routes>
+      </Routes> */}
       
 
     </>

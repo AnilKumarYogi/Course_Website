@@ -1,5 +1,9 @@
-const CourseDescription = ({course}) => {
+import { useParams } from "react-router-dom";
+import courses from "../data/courses";
 
+const CourseDescription = () => {
+  const {id} = useParams();
+  const course = courses.listOfCourses[id];
   if (!course) {
     return <div>Course not found.</div>;
   }
