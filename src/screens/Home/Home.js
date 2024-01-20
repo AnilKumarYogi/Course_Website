@@ -40,7 +40,6 @@ function Home({courses}) {
         </ul>
       </nav>
       <Routes>
-        {/* <Route path='/course/1' element={<CourseId1/>}/> */}
           {filteredCourses.map((course, index) => (
            <Route key={index} path={`/course/${course.name}`} element={<CourseDescription course={course}/>}/>
           ))}

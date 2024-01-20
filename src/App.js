@@ -10,28 +10,6 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import Dashboard from "./screens/dashboard/Dashboard";
 
-// const CourseDescription = () => {
-//   // console.log(match);
-//   // const courseId = match.id;
-//   const params = useParams();
-//   console.log(params);
-//   const courseId = params.id;
-//   const course = courses[courseId];
-
-//   if (!course) {
-//     return <div>Course not found.</div>;
-//   }
-
-//   return (
-//     <div>
-//       <h2>Course Description</h2>
-//       <h3>{course.name}</h3>
-//       <p><strong>Instructor:</strong> {course.instructor}</p>
-//       <p>{course.description}</p>
-//     </div>
-//   );
-// };
-
 
 
 function App() {
