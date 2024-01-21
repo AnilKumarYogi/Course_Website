@@ -26,7 +26,7 @@ function Home({ courses }) {
         <ul style={styles.courseList}>
           {filteredCourses.map((course, index) => (
             <li key={index} style={styles.courseItem}>
-              <Link to={`/course/${index}`} style={styles.link}>
+              <Link to={`/course/${course.id}`} style={styles.link}>
                 <strong>Course:</strong> {course.name} <br />
                 <strong>Instructor:</strong> {course.instructor}
               </Link>

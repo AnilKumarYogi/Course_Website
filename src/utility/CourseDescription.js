@@ -5,7 +5,7 @@ import { styles } from './Styles';
 
 const CourseDescription = () => {
   const { id } = useParams();
-  const course = courses.listOfCourses[id];
+  const course = courses.listOfCourses[id-1];
 
   const [isPrerequisitesOpen, setPrerequisitesOpen] = useState(false);
   const [isSyllabusOpen, setSyllabusOpen] = useState(false);
@@ -33,6 +33,7 @@ const CourseDescription = () => {
         <p><strong>Instructor:</strong> {course.instructor}</p>
         <p><strong>Description:</strong> {course.description}</p>
         <p><strong>Enrollment Status:</strong> {course.enrollmentStatus}</p>
+        <p><strong>Duration:</strong> {course.duration}</p>
         <p><strong>Schedule:</strong> {course.schedule}</p>
         <p><strong>Location:</strong> {course.location}</p>
       </div>
