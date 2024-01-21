@@ -49,6 +49,7 @@ const Dashboard = () => {
   return (
     <div>
       <h1>User Dashboard</h1>
+      <h2>Enrolled Courses</h2>
       <ul>
         {coursesData.map(course => (
           <li key={course.id}>
