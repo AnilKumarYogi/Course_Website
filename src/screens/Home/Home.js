@@ -1,37 +1,32 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom'
-// import CourseId1 from '../course/1';
-// import CourseId2 from '../course/2';
-import CourseDescription from '../../utility/CourseDescription';
-function Home({courses}) {
-    // console.log("anil->",courses);
-    // console.log("anil->",typeof(courses));
+import { styles } from './styles.js';
 
-    const [searchTerm, setSearchTerm] = useState('');
+function Home({ courses }) {
+  const [searchTerm, setSearchTerm] = useState('');
 
-    const filteredCourses = courses.filter(course => {
-        return (
-        course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        course.instructor.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-    });
-    // console.log(courses)
+  const filteredCourses = courses.filter(course => {
     return (
-    <>
-      <h1>Choose a course</h1>
+      course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.instructor.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
+
+  return (
+    <div style={styles.container}>
+      <h1 style={styles.heading}>Choose a course</h1>
       <input
         type="text"
         placeholder="Search by course or instructor"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        style={styles.searchInput}
       />
       <nav>
-        <ul style={{ maxHeight: '300px', overflowY: 'auto', listStyle: 'none', padding: 0 }}>
+        <ul style={styles.courseList}>
           {filteredCourses.map((course, index) => (
-            <li key={index} style={{ borderBottom: '1px solid #ccc', padding: '10px' }}>
-              <Link to={`/course/${course.name}`}>
+            <li key={index} style={styles.courseItem}>
+              <Link to={`/course/${index}`} style={styles.link}>
                 <strong>Course:</strong> {course.name} <br />
                 <strong>Instructor:</strong> {course.instructor}
               </Link>
@@ -39,15 +34,8 @@ function Home({courses}) {
           ))}
         </ul>
       </nav>
-      <Routes>
-          {filteredCourses.map((course, index) => (
-           <Route key={index} path={`/course/${course.name}`} element={<CourseDescription course={course}/>}/>
-          ))}
-      </Routes>
-      
-
-    </>
-    )
+    </div>
+  );
 }
 
 export default Home;
