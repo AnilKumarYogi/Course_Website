@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { styles } from './styles.js';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { styles } from "./styles.js";
 
 function Home({ courses }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredCourses = courses.filter(course => {
+  const filteredCourses = courses.filter((course) => {
     return (
       course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       course.instructor.toLowerCase().includes(searchTerm.toLowerCase())
@@ -26,7 +26,7 @@ function Home({ courses }) {
         <ul style={styles.courseList}>
           {filteredCourses.map((course, index) => (
             <li key={index} style={styles.courseItem}>
-              <Link to={`/course/${index}`} style={styles.link}>
+              <Link to={`/course/${course.id}`} style={styles.link}>
                 <strong>Course:</strong> {course.name} <br />
                 <strong>Instructor:</strong> {course.instructor}
               </Link>

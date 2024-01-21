@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import courses from '../../data/courses';
-import { styles } from './Styles'; 
+import React, { useState } from "react";
+import courses from "../../data/courses";
+import { styles } from "./Styles";
 
-
-const enrolledCoursesData = [1,5,6]; // Enrolled course IDs for the current user
+const enrolledCoursesData = [1, 5, 6]; // Enrolled course IDs for the current user
 
 const initialProgress = new Map();
 const coursesData = enrolledCoursesData.map((courseId) => {
@@ -42,7 +41,11 @@ const Dashboard = () => {
         {coursesData.map((course) => (
           <li key={course.id} style={styles.courseItem}>
             <div>
-            <img src={course.thumbnail} alt={`Thumbnail for ${course.name}`} style={styles.thumbnail} />
+              <img
+                src={course.thumbnail}
+                alt={`Thumbnail for ${course.name}`}
+                style={styles.thumbnail}
+              />
             </div>
             <div style={styles.courseDetails}>
               <h2 style={styles.courseName}>{course.name}</h2>
@@ -51,11 +54,19 @@ const Dashboard = () => {
               <div style={styles.progress}>
                 <p>Progress: {progress.get(course.id)}%</p>
                 <div style={styles.progressBar}>
-                  <progress value={progress.get(course.id)} max="100"></progress>
+                  <progress
+                    value={progress.get(course.id)}
+                    max="100"
+                  ></progress>
                 </div>
               </div>
-              <button style={styles.button} onClick={() => markAsCompleted(course.id)}>
-                {completedList.includes(course.id) ? 'Mark as Incomplete' : 'Mark as Completed'}
+              <button
+                style={styles.button}
+                onClick={() => markAsCompleted(course.id)}
+              >
+                {completedList.includes(course.id)
+                  ? "Mark as Incomplete"
+                  : "Mark as Completed"}
               </button>
             </div>
             <hr style={styles.hr} />
