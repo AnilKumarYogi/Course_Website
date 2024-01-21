@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import courses from '../data/courses';
-import { styles } from './Styles'; 
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import courses from "../data/courses";
+import { styles } from "./Styles";
 
 const CourseDescription = () => {
   const { id } = useParams();
-  const course = courses.listOfCourses[id-1];
+  const course = courses.listOfCourses[id - 1];
 
   const [isPrerequisitesOpen, setPrerequisitesOpen] = useState(false);
   const [isSyllabusOpen, setSyllabusOpen] = useState(false);
@@ -30,22 +30,36 @@ const CourseDescription = () => {
       <h2 style={styles.heading}>Course Description</h2>
       <h3>{course.name}</h3>
       <div style={styles.courseInfo}>
-        <p><strong>Instructor:</strong> {course.instructor}</p>
-        <p><strong>Description:</strong> {course.description}</p>
-        <p><strong>Enrollment Status:</strong> {course.enrollmentStatus}</p>
-        <p><strong>Duration:</strong> {course.duration}</p>
-        <p><strong>Schedule:</strong> {course.schedule}</p>
-        <p><strong>Location:</strong> {course.location}</p>
+        <p>
+          <strong>Instructor:</strong> {course.instructor}
+        </p>
+        <p>
+          <strong>Description:</strong> {course.description}
+        </p>
+        <p>
+          <strong>Enrollment Status:</strong> {course.enrollmentStatus}
+        </p>
+        <p>
+          <strong>Duration:</strong> {course.duration}
+        </p>
+        <p>
+          <strong>Schedule:</strong> {course.schedule}
+        </p>
+        <p>
+          <strong>Location:</strong> {course.location}
+        </p>
       </div>
       {/* Prerequisites */}
       <div style={styles.section}>
         <button style={styles.button} onClick={togglePrerequisites}>
-          {isPrerequisitesOpen ? 'Hide Prerequisites' : 'Show Prerequisites'}
+          {isPrerequisitesOpen ? "Hide Prerequisites" : "Show Prerequisites"}
         </button>
         {isPrerequisitesOpen && (
           <ul style={styles.list}>
             {prerequisites.map((prerequisite, index) => (
-              <li key={index} style={styles.listItem}>{prerequisite}</li>
+              <li key={index} style={styles.listItem}>
+                {prerequisite}
+              </li>
             ))}
           </ul>
         )}
@@ -53,7 +67,7 @@ const CourseDescription = () => {
       {/* Syllabus */}
       <div style={styles.section}>
         <button style={styles.button} onClick={toggleSyllabus}>
-          {isSyllabusOpen ? 'Hide Syllabus' : 'Show Syllabus'}
+          {isSyllabusOpen ? "Hide Syllabus" : "Show Syllabus"}
         </button>
         {isSyllabusOpen && (
           <ul style={styles.list}>
