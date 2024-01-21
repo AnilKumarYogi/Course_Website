@@ -10,11 +10,12 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import Dashboard from "./screens/dashboard/Dashboard";
 import CourseDescription from "./utility/CourseDescription";
+import NotFound from "./utility/NotFound";
 
 
 
 function App() {
-  const filteredCourses = courses.listOfCourses
+  // const filteredCourses = courses.listOfCourses
   return (
     <>
     <ul>
@@ -22,11 +23,12 @@ function App() {
       <li> <Link to='/dashboard'>Dashboard</Link></li>
     </ul>
     <Routes>
-      <Route path="*" element={<Home courses={courses.listOfCourses}/>}/>
+      <Route path="/" element={<Home courses={courses.listOfCourses}/>}/>
       <Route path="/dashboard" element={<Dashboard />}/>
-          {filteredCourses.map((course, index) => (
+          {courses.listOfCourses.map((course, index) => (
            <Route key={index} path="/course/:id" element={<CourseDescription/>}/>
           ))}
+      <Route path="*" element={<NotFound/>}/>
     </Routes>
     </>
   );
