@@ -39,7 +39,7 @@ Follow the steps below to run the application locally:
    git clone https://github.com/AnilKumarYogi/Course_Website.git
 2. **Navigate to the Project Directory:**
     ```bash
-   cd course-website
+   cd Course_Website
 3. **Install Dependencies:**
    ```bash
    npm install
