@@ -1,26 +1,19 @@
-// import logo from './logo.svg';
-// import './App.css';
 import Home from "./screens/Home/Home";
 import courses from "./data/courses";
-import React, { useState } from 'react';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { useParams } from 'react-router-dom';
-// import CourseId1 from "./screens/course/1";
+import { Route, Routes } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import Dashboard from "./screens/dashboard/Dashboard";
 import CourseDescription from "./utility/CourseDescription";
 import NotFound from "./utility/NotFound";
-
+import { styles } from "./AppStyles";
 
 
 function App() {
-  // const filteredCourses = courses.listOfCourses
   return (
-    <>
-    <ul>
-     <li> <Link to='/'>Home</Link></li>
-      <li> <Link to='/dashboard'>Dashboard</Link></li>
+    <div style={styles.container}>
+    <ul style={styles.navigation}>
+     <li style={styles.navItem}> <Link to='/' style={styles.link}>Home</Link></li>
+      <li style={styles.navItem}> <Link to='/dashboard' style={styles.link}>Dashboard</Link></li>
     </ul>
     <Routes>
       <Route path="/" element={<Home courses={courses.listOfCourses}/>}/>
@@ -30,7 +23,7 @@ function App() {
           ))}
       <Route path="*" element={<NotFound/>}/>
     </Routes>
-    </>
+    </div>
   );
 }
 

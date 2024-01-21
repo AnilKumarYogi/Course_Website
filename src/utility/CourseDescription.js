@@ -1,13 +1,13 @@
-import { useParams } from "react-router-dom";
-import courses from "../data/courses";
 import React, { useState } from 'react';
-const CourseDescription = () => {
+import { useParams } from 'react-router-dom';
+import courses from '../data/courses';
+import { styles } from './Styles'; 
 
-  const {id} = useParams();
+const CourseDescription = () => {
+  const { id } = useParams();
   const course = courses.listOfCourses[id];
 
   const [isPrerequisitesOpen, setPrerequisitesOpen] = useState(false);
-  
   const [isSyllabusOpen, setSyllabusOpen] = useState(false);
 
   if (!course) {
@@ -23,43 +23,41 @@ const CourseDescription = () => {
   };
 
   const prerequisites = course.prerequisites;
-
   const syllabus = course.syllabus;
 
-
-
-
   return (
-    <div>
-      <h2>Course Description</h2>
+    <div style={styles.container}>
+      <h2 style={styles.heading}>Course Description</h2>
       <h3>{course.name}</h3>
-      <p><strong>Instructor:</strong> {course.instructor}</p>
-      <p><strong>Description:</strong> {course.description}</p>
-      <p><strong>Enrollment Status:</strong> {course.enrollmentStatus}</p>
-      <p><strong>Schedule:</strong> {course.schedule}</p>
-      <p><strong>Location:</strong> {course.location}</p>
+      <div style={styles.courseInfo}>
+        <p><strong>Instructor:</strong> {course.instructor}</p>
+        <p><strong>Description:</strong> {course.description}</p>
+        <p><strong>Enrollment Status:</strong> {course.enrollmentStatus}</p>
+        <p><strong>Schedule:</strong> {course.schedule}</p>
+        <p><strong>Location:</strong> {course.location}</p>
+      </div>
       {/* Prerequisites */}
-      <div>
-        <button onClick={togglePrerequisites}>
+      <div style={styles.section}>
+        <button style={styles.button} onClick={togglePrerequisites}>
           {isPrerequisitesOpen ? 'Hide Prerequisites' : 'Show Prerequisites'}
         </button>
         {isPrerequisitesOpen && (
-          <ul>
+          <ul style={styles.list}>
             {prerequisites.map((prerequisite, index) => (
-              <li key={index}>{prerequisite}</li>
+              <li key={index} style={styles.listItem}>{prerequisite}</li>
             ))}
           </ul>
         )}
       </div>
       {/* Syllabus */}
-      <div>
-        <button onClick={toggleSyllabus}>
+      <div style={styles.section}>
+        <button style={styles.button} onClick={toggleSyllabus}>
           {isSyllabusOpen ? 'Hide Syllabus' : 'Show Syllabus'}
         </button>
         {isSyllabusOpen && (
-          <ul>
+          <ul style={styles.list}>
             {syllabus.map((week, index) => (
-              <li key={index}>
+              <li key={index} style={styles.listItem}>
                 <strong>Week {week.week}:</strong> {week.topic}
                 <p>{week.content}</p>
               </li>
